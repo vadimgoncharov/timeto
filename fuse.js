@@ -1,5 +1,6 @@
 const {
   FuseBox,
+  CSSResourcePlugin,
   CSSPlugin,
   SassPlugin,
   PostCSSPlugin,
@@ -22,6 +23,10 @@ Sparky.task("config", () => {
         SassPlugin(),
         PostCSSPlugin({
           plugins: [autoprefixer],
+        }),
+        CSSResourcePlugin({
+          dist: `dist/assets`,
+          resolve: (f) => `/assets/${f}`,
         }),
         CSSPlugin(),
       ],
