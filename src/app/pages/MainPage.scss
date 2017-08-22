@@ -10,20 +10,112 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Helvetica Neue";
   background-color: #000;
   color: #fff;
 }
 
-.wf-neucha-n4-active body {
-  font-family: Neucha, sans-serif;
+.App {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
 }
 
-.moon {
-  width: 200px;
-  height: 200px;
-  background: url('../assets/i/moon.png') no-repeat center center;
-  background-size: contain;
-  position: relative;
-  top: 10px;
+.App-bg {
+
+}
+
+.App-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+}
+//
+//.App-bg {
+//  position: absolute;
+//  left: 0;
+//  top: 0;
+//  bottom: 0;
+//  right: 0;
+//  z-index: 20;
+//  background: url('../assets/i/bg_gradient.jpg') no-repeat center center;
+//  background-size: cover;
+//
+//  &::before {
+//    content: '';
+//    position: absolute;
+//    left: 50%;
+//    transform: translate(-50%, 0);
+//    top: 0;
+//    z-index: 25;
+//    background: no-repeat center center;
+//    background-size: cover;
+//  }
+//}
+//
+//.App--dayType_day .App-bg {
+//  //background-image: url('../assets/i/bg_day.jpg');
+//  //background: linear-gradient(to bottom, #0000FF, #000000 50%, #FF0000);
+//}
+//
+//.App--dayType_morning .App-bg {
+//  background-image: url('../assets/i/bg_morning.jpg');
+//}
+//
+//.App--dayType_evening .App-bg {
+//  background-image: url('../assets/i/bg_evening.jpg');
+//}
+//
+//.App--dayType_night .App-bg {
+//  background-image: url('../assets/i/bg_night.jpg');
+//}
+//
+//.App--dayType_day .App-bg,
+//.App--dayType_morning .App-bg {
+//  &::before {
+//    background-image: url('../assets/i/sun.png');
+//    width: 404px;
+//    height: 297px;
+//  }
+//}
+//
+//.App--dayType_evening .App-bg,
+//.App--dayType_night .App-bg {
+//  &::before {
+//    background-image: url('../assets/i/moon.png');
+//    width: 390px;
+//    height: 298px;
+//  }
+//}
+
+.App-message {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 200px;
+  text-align: center;
+  font-size: 50px;
+  line-height: 72px;
+  z-index: 30;
+}
+
+.wf-neucha-n4-active .App-message {
+  font-family: Neucha;
+}
+
+.App-slider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+  z-index: 50;
+  text-align: center;
 }

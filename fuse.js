@@ -4,6 +4,7 @@ const {
   CSSPlugin,
   SassPlugin,
   PostCSSPlugin,
+  ImageBase64Plugin,
   QuantumPlugin,
   WebIndexPlugin,
   Sparky,
@@ -30,6 +31,9 @@ Sparky.task("config", () => {
         }),
         CSSPlugin(),
       ],
+      ImageBase64Plugin({
+        useDefault: true,
+      }),
       WebIndexPlugin({
         template: "src/index.html"
       }),
