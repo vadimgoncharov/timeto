@@ -7,6 +7,7 @@ const {
   ImageBase64Plugin,
   QuantumPlugin,
   WebIndexPlugin,
+  UglifyJSPlugin,
   Sparky,
 } = require("fuse-box");
 const autoprefixer = require('autoprefixer');
@@ -38,9 +39,11 @@ Sparky.task("config", () => {
         template: "src/index.html"
       }),
       isProduction && QuantumPlugin({
-        removeExportsInterop: false,
-        uglify: false
-      })
+        removeExportsInterop: true,
+        uglify: true,
+        treeshake: true,
+      }),
+
     ],
   });
 // vendor

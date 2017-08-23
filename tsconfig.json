@@ -5,7 +5,7 @@
     "noEmitHelpers": false,
     "emitDecoratorMetadata": true,
     "jsx": "react",
-    "target": "es6",
+    "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
     "removeComments": true,
@@ -19,7 +19,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "experimentalDecorators": true,
-    "outDir": "dist/",
+    "outDir": "docs/",
     "pretty": true
   }
 }
