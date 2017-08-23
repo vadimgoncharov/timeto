@@ -18,7 +18,7 @@ Sparky.task("config", () => {
     homeDir: "src/",
     sourceMaps: !isProduction,
     hash: isProduction,
-    output: "dist/$name.js",
+    output: "docs/$name.js",
     plugins: [
       [
         SassPlugin(),
@@ -26,7 +26,7 @@ Sparky.task("config", () => {
           plugins: [autoprefixer],
         }),
         CSSResourcePlugin({
-          dist: `dist/assets`,
+          dist: `docs/assets`,
           resolve: (f) => `/assets/${f}`,
         }),
         CSSPlugin(),
@@ -39,7 +39,7 @@ Sparky.task("config", () => {
       }),
       isProduction && QuantumPlugin({
         removeExportsInterop: false,
-        uglify: true
+        uglify: false
       })
     ],
   });
@@ -59,10 +59,10 @@ Sparky.task("default", ["clean", "config"], () => {
   return fuse.run();
 });
 
-Sparky.task("clean", () => Sparky.src("dist/").clean("dist/"));
+Sparky.task("clean", () => Sparky.src("docs/").clean("docs/"));
 Sparky.task("prod-env", ["clean"], () => { isProduction = true })
 Sparky.task("dist", ["prod-env", "config"], () => {
   // comment out to prevent dev server from running (left for the demo)
-  fuse.dev();
+  // fuse.dev();
   return fuse.run();
 });

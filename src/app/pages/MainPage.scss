@@ -38,68 +38,11 @@ body {
   width: 100%;
   height: 100%;
 }
-//
-//.App-bg {
-//  position: absolute;
-//  left: 0;
-//  top: 0;
-//  bottom: 0;
-//  right: 0;
-//  z-index: 20;
-//  background: url('../assets/i/bg_gradient.jpg') no-repeat center center;
-//  background-size: cover;
-//
-//  &::before {
-//    content: '';
-//    position: absolute;
-//    left: 50%;
-//    transform: translate(-50%, 0);
-//    top: 0;
-//    z-index: 25;
-//    background: no-repeat center center;
-//    background-size: cover;
-//  }
-//}
-//
-//.App--dayType_day .App-bg {
-//  //background-image: url('../assets/i/bg_day.jpg');
-//  //background: linear-gradient(to bottom, #0000FF, #000000 50%, #FF0000);
-//}
-//
-//.App--dayType_morning .App-bg {
-//  background-image: url('../assets/i/bg_morning.jpg');
-//}
-//
-//.App--dayType_evening .App-bg {
-//  background-image: url('../assets/i/bg_evening.jpg');
-//}
-//
-//.App--dayType_night .App-bg {
-//  background-image: url('../assets/i/bg_night.jpg');
-//}
-//
-//.App--dayType_day .App-bg,
-//.App--dayType_morning .App-bg {
-//  &::before {
-//    background-image: url('../assets/i/sun.png');
-//    width: 404px;
-//    height: 297px;
-//  }
-//}
-//
-//.App--dayType_evening .App-bg,
-//.App--dayType_night .App-bg {
-//  &::before {
-//    background-image: url('../assets/i/moon.png');
-//    width: 390px;
-//    height: 298px;
-//  }
-//}
 
-.App-message {
+.App-phrase {
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 20px;
+  right: 20px;
   top: 200px;
   text-align: center;
   font-size: 50px;
@@ -107,15 +50,79 @@ body {
   z-index: 30;
 }
 
-.wf-neucha-n4-active .App-message {
+@media screen and (max-width: 600px) {
+  .App-phrase {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+.wf-neucha-n4-active .App-phrase {
   font-family: Neucha;
 }
 
-.App-slider {
+.App-control {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 30px;
   z-index: 50;
   text-align: center;
+}
+
+.App-slider {
+  display: none;
+}
+
+.App-cities {
+  display: flex;
+  justify-content: center;
+}
+
+.App-citiesItem {
+  margin: 0 10px;
+}
+
+.App-controlButton {
+  background: rgba(#fff, 0.2);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  transition: color 400ms ease-in-out, background 400ms ease-in-out;
+  user-select: none;
+}
+
+.App-controlButton.is-selected_no {
+  color: #000;
+}
+
+.App-controlButton.is-selected_yes {
+  color: #fff;
+  background: rgba(#fff, 0.1);
+}
+
+.ua-canHover {
+  .App.is-animationRunning_no .App-controlButton.is-selected_no {
+    cursor: pointer;
+    &:hover {
+      color: rgba(#000, 0.6);
+      background: rgba(#fff, 0.1);
+    }
+  }
+  .App.is-animationRunning_yes .App-controlButton.is-selected_no {
+    cursor: not-allowed;
+  }
+}
+
+.App-futureButtonContainer {
+  margin-top: 12px;
+  display: inline-block;
+}
+
+.App-futureButton {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+  margin: 0 0 0 10px;
 }
