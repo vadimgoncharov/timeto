@@ -1,7 +1,6 @@
 @font-face {
   font-family: 'Neucha';
   src:
-    url('../assets/fonts/Neucha.woff') format('woff'),
     url('../assets/fonts/Neucha.woff2') format('woff2');
   font-style: normal;
   font-weight: normal;
@@ -54,6 +53,7 @@ body {
   .App-phrase {
     font-size: 28px;
     line-height: 36px;
+    top: 165px;
   }
 }
 
@@ -71,7 +71,7 @@ body {
 }
 
 .App-slider {
-  display: none;
+  //display: none;
 }
 
 .App-cities {

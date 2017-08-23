@@ -80,7 +80,6 @@ class App extends React.Component<TProps, TState> {
         <canvas className="App-canvas" ref={this.onCanvasRefSet} />
         <div className="App-phrase">{this.getPhraseMessage()}</div>
         <div className="App-control">
-          {this.renderDebugSlider()}
           {this.renderCities()}
           {this.renderFutureButton()}
         </div>

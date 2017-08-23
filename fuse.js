@@ -7,10 +7,16 @@ const {
   ImageBase64Plugin,
   QuantumPlugin,
   WebIndexPlugin,
-  UglifyJSPlugin,
   Sparky,
 } = require("fuse-box");
 const autoprefixer = require('autoprefixer');
+
+const DEV_DIST_DIR = 'dist';
+const PROD_DIST_DIR = 'docs';
+
+const distDir = () => {
+  return isProduction ? PROD_DIST_DIR : DEV_DIST_DIR;
+};
 
 let fuse, app, vendor, isProduction;
 
@@ -19,7 +25,7 @@ Sparky.task("config", () => {
     homeDir: "src/",
     sourceMaps: !isProduction,
     hash: isProduction,
-    output: "docs/$name.js",
+    output: `${distDir()}/$name.js`,
     plugins: [
       [
         SassPlugin(),
@@ -27,7 +33,7 @@ Sparky.task("config", () => {
           plugins: [autoprefixer],
         }),
         CSSResourcePlugin({
-          dist: `docs/assets`,
+          dist: `${distDir()}/assets`,
           resolve: (f) => `/assets/${f}`,
         }),
         CSSPlugin(),
@@ -62,9 +68,11 @@ Sparky.task("default", ["clean", "config"], () => {
   return fuse.run();
 });
 
-Sparky.task("clean", () => Sparky.src("docs/").clean("docs/"));
+Sparky.task("clean", () => {
+  return Sparky.src("dist/").clean("dist/");
+});
 Sparky.task("prod-env", ["clean"], () => { isProduction = true })
-Sparky.task("dist", ["prod-env", "config"], () => {
+Sparky.task("production", ["prod-env", "config"], () => {
   // comment out to prevent dev server from running (left for the demo)
   // fuse.dev();
   return fuse.run();

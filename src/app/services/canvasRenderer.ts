@@ -34,8 +34,6 @@ function renderGradient(data: TData): void {
 
   const nextDayTypeIndex = currTimeOfDayIndex + 1 > TIMES_OF_DAY.length - 1 ? 0 : currTimeOfDayIndex + 1;
 
-  console.log(currMinuteInDay, currMinuteInDayOffset, nextDayTypeIndex);
-
   const currDayTypeData = TIMES_OF_DAY[currTimeOfDayIndex];
   const nextDayTypeData = TIMES_OF_DAY[nextDayTypeIndex];
 

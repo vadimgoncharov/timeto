@@ -7,7 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "node ./fuse.js"
+    "start": "node ./fuse.js",
+    "build": "node ./fuse.js production"
   },
   "repository": "git+https://github.com/vadimgoncharov/timeto.git",
   "author": "Vadim Goncharov <vg@vadimgoncharov.ru>",
