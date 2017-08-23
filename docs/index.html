@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<script>
+    const canHover = !(matchMedia('(hover: none)').matches);
+    if (canHover) {
+        document.documentElement.className += ' ua-canHover';
+    }
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>Время в городе</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script  type="text/javascript" src="/334ab48d-api.js"></script>
+<script  type="text/javascript" src="/65fe8ad4-vendor.js"></script>
+<script  type="text/javascript" src="/82a82817-app.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-105185222-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</html>
