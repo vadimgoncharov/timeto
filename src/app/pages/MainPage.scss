@@ -109,6 +109,9 @@ body {
       background: rgba(#fff, 0.1);
     }
   }
+  .App-controlButton.is-selected_yes {
+    cursor: default;
+  }
   .App.is-animationRunning_yes .App-controlButton.is-selected_no {
     cursor: not-allowed;
   }
