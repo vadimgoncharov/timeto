@@ -7,8 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "node ./fuse.js",
-    "build": "node ./fuse.js production"
+    "dev": "node ./fuse.js",
+    "prod": "node ./fuse.js production"
   },
   "repository": "git+https://github.com/vadimgoncharov/timeto.git",
   "author": "Vadim Goncharov <vg@vadimgoncharov.ru>",
@@ -18,20 +18,19 @@
   },
   "homepage": "https://github.com/vadimgoncharov/timeto#readme",
   "devDependencies": {
-    "autoprefixer": "7.1.2",
-    "fuse-box": "2.2.2",
-    "node-sass": "4.5.3",
-    "postcss": "6.0.9",
-    "typescript": "2.4.2",
-    "uglify-js": "3.0.28"
+    "autoprefixer": "7.2.2",
+    "fuse-box": "2.5.0-beta.1",
+    "node-sass": "4.7.2",
+    "postcss": "6.0.14",
+    "typescript": "2.6.2",
+    "uglify-js": "3.2.2"
   },
   "dependencies": {
     "@types/gsap": "1.19.1",
-    "gsap": "1.20.2",
+    "gsap": "1.20.3",
     "onresize": "^1.0.1",
-    "react": "15.6.1",
-    "react-dom": "15.6.1",
-    "react-transition-group": "1.2.0",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
     "webfontloader": "1.6.28"
   }
 }
