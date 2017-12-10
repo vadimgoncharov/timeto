@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as WebFont from 'webfontloader';
 import * as gsap from 'gsap';
 import * as onresize from 'onresize';
 
@@ -52,12 +51,11 @@ class App extends React.Component<TProps, TState> {
   private deathStarImg: HTMLImageElement;
   private initialDate: Date = new Date(NOW);
 
+  public componentWillMount() {
+    this.loadFonts();
+  }
+
   public componentDidMount() {
-    WebFont.load({
-      custom: {
-        families: [c.assets.FONT_FAMILY_NAME]
-      }
-    });
     onresize.on(this.onResize);
     this.loadImages().then(() => {
       this.recalculateSizes();
@@ -85,6 +83,24 @@ class App extends React.Component<TProps, TState> {
         </div>
       </div>
     )
+  }
+
+  private loadFonts() {
+    const isFontLoadingApiSupported = (
+      (window as any).FontFace && (document as any).fonts
+    );
+    if (!isFontLoadingApiSupported) {
+      return;
+    }
+    const font = new (window as any).FontFace(
+      'Neucha', 'url(assets/Neucha.woff2)'
+    );
+    (document as any).fonts.add(font);
+    font.load().then(() => {
+      document.documentElement.classList.add('is-fontLoaded');
+    }, () => {
+      // console.error('err', err);
+    });
   }
 
   private renderDebugSlider() {
@@ -147,7 +163,7 @@ class App extends React.Component<TProps, TState> {
       this.loadImage(sunImg),
       this.loadImage(sunGlowImg),
       this.loadImage(deathStarImg),
-    ]).then((data) => {
+    ]).then((data: Array<HTMLImageElement>) => {
       this.moonImg = data[0];
       this.moonGlowImg = data[1];
       this.sunImg = data[2];
@@ -156,7 +172,7 @@ class App extends React.Component<TProps, TState> {
     });
   }
 
-  private loadImage(imgSrc) {
+  private loadImage(imgSrc): Promise<HTMLImageElement> {
     return new Promise((resolve) => {
       const img = new Image();
       img.onload = () => {

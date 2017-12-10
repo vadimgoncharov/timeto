@@ -9,9 +9,10 @@ const {
   WebIndexPlugin,
   Sparky,
 } = require("fuse-box");
+const fse = require('fs-extra');
 const autoprefixer = require('autoprefixer');
 
-const DEV_DIST_DIR = 'dist';
+const DEV_DIST_DIR = 'dev/docs';
 const PROD_DIST_DIR = 'docs';
 
 const distDir = () => {
@@ -22,9 +23,10 @@ let fuse, app, vendor, isProduction;
 
 Sparky.task("config", () => {
   fuse = new FuseBox({
+    target: "browser",
     homeDir: "src/",
     sourceMaps: !isProduction,
-    hash: isProduction,
+    hash: false,
     output: `${distDir()}/$name.js`,
     plugins: [
       [
@@ -48,28 +50,31 @@ Sparky.task("config", () => {
         removeExportsInterop: true,
         uglify: true,
         treeshake: true,
+        bakeApiIntoBundle: 'app',
+        containedAPI : true,
       }),
 
     ],
   });
-// vendor
-  vendor = fuse
-    .bundle("vendor")
-    .instructions("~ index.tsx")
+  // vendor = fuse
+  //   .bundle("vendor")
+  //   .instructions("~ index.tsx");
 
-// bundle app
-  app = fuse.bundle("app").instructions("> [index.tsx]")
+  app = fuse.bundle("app").instructions("> index.tsx")
 });
 
-Sparky.task("default", ["clean", "config"], () => {
+Sparky.task("default", ["clean", "config", "copy-assets"], () => {
   fuse.dev();
 // add dev instructions
-  app.watch().hmr()
+  app.watch().hmr();
   return fuse.run();
 });
 
 Sparky.task("clean", () => {
-  return Sparky.src("dist/").clean("dist/");
+  return Sparky.src("dev/").clean("dev/");
+});
+Sparky.task('copy-assets', () => {
+  return fse.copy('docs/assets', 'dev/docs/assets');
 });
 Sparky.task("prod-env", ["clean"], () => { isProduction = true })
 Sparky.task("production", ["prod-env", "config"], () => {

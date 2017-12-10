@@ -14,7 +14,7 @@ out.js
 .DS_Store
 .tmp/
 .idea/
-dist/
+dev/
 sourcemaps.js.map
 .fusebox
 npm-debug.log

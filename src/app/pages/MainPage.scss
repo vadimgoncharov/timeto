@@ -1,11 +1,3 @@
-@font-face {
-  font-family: 'Neucha';
-  src:
-    url('../assets/fonts/Neucha.woff2') format('woff2');
-  font-style: normal;
-  font-weight: normal;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -57,7 +49,7 @@ body {
   }
 }
 
-.wf-neucha-n4-active .App-phrase {
+html.is-fontLoaded .App-phrase {
   font-family: Neucha;
 }
 
