@@ -15,6 +15,7 @@ import moonGlowImg from '../assets/i/moon_glow.png';
 import deathStarImg from '../assets/i/death-star.png';
 
 import './MainPage.scss';
+import {FormEvent} from "react";
 
 const NOW = new Date();
 
@@ -103,18 +104,18 @@ class App extends React.Component<TProps, TState> {
     });
   }
 
-  private renderDebugSlider() {
-    return (
-      <div className="App-slider">
-        <input
-          type="range"
-          min="0"
-          max={c.values.MINUTES_IN_DAY - 1}
-          value={getMinutesInDayFromDate(this.state.selectedDate, this.state.selectedTimezoneOffsetInMinutes)}
-          onChange={this.onSliderChange}/>
-      </div>
-    );
-  }
+  // private renderDebugSlider() {
+  //   return (
+  //     <div className="App-slider">
+  //       <input
+  //         type="range"
+  //         min="0"
+  //         max={c.values.MINUTES_IN_DAY - 1}
+  //         value={getMinutesInDayFromDate(this.state.selectedDate, this.state.selectedTimezoneOffsetInMinutes)}
+  //         onChange={this.onSliderChange}/>
+  //     </div>
+  //   );
+  // }
 
   private renderCities() {
     const {selectedCityId} = this.state;
@@ -127,11 +128,13 @@ class App extends React.Component<TProps, TState> {
           const classNameControlButton = `App-citiesItemButton App-controlButton is-selected_${isSelected ? 'yes' : 'no'}`;
           return (
             <div className={classNameContainer} key={cityId}>
-              <div
+              <button
+                type="button"
+                tabIndex={0}
                 className={classNameControlButton}
                 data-city-id={cityId}
                 onClick={this.onCityClick}
-              >{city.name}</div>
+              >{city.name}</button>
             </div>
           );
         })}
@@ -144,9 +147,11 @@ class App extends React.Component<TProps, TState> {
     const className = `App-futureButton App-controlButton is-selected_${isFutureAnimationRunning ? 'yes' : 'no'}`;
     return (
       <div className="App-futureButtonContainer">
-        <div
+        <button
+          type="button"
+          tabIndex={0}
           className={className}
-          onClick={this.onFutureButtonClick}>В будущее!</div>
+          onClick={this.onFutureButtonClick}>В будущее!</button>
       </div>
     );
   }
@@ -299,7 +304,7 @@ class App extends React.Component<TProps, TState> {
     });
   }
 
-  private onCityClick = (event: Event) => {
+  private onCityClick = (event: FormEvent<HTMLButtonElement>) => {
     if (this.isAnimationRunning()) {
       return;
     }

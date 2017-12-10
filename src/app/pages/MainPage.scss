@@ -1,9 +1,23 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Helvetica Neue";
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #000;
   color: #fff;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: inherit;
+}
+
+[data-whatintent='mouse'] *:focus {
+  outline: none;
 }
 
 .App {
@@ -72,7 +86,7 @@ html.is-fontLoaded .App-phrase {
 }
 
 .App-citiesItem {
-  margin: 0 10px;
+  margin: 4px 10px;
 }
 
 .App-controlButton {
@@ -93,7 +107,7 @@ html.is-fontLoaded .App-phrase {
   background: rgba(#fff, 0.1);
 }
 
-.ua-canHover {
+[data-whatintent='mouse'] {
   .App.is-animationRunning_no .App-controlButton.is-selected_no {
     cursor: pointer;
     &:hover {
@@ -119,5 +133,5 @@ html.is-fontLoaded .App-phrase {
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 5px 10px;
-  margin: 0 0 0 10px;
+  margin: 4px 0 4px 10px;
 }
